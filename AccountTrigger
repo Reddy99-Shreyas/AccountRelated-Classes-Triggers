@@ -1,0 +1,41 @@
+trigger ActTrigger on Account (Before Insert, After Insert, Before Update, After update, Before Delete, After Delete, After Undelete) {
+    
+    //After UnDelete
+    if(trigger.isafter && trigger.isUndelete){
+        AccTriggerHandler.sendEmailOnUndelete(Trigger.new);
+    }
+    
+    
+    //After Delete
+    if(trigger.isAfter && Trigger.isDelete){
+        AccTriggerHandler.sendEmailOnAfterDelete(Trigger.old);
+    }
+    
+    
+    //before delete
+    if(trigger.isbefore && trigger.isDelete){
+        AccTriggerHandler.befDel(trigger.old);
+    }
+    
+    
+    //after Update
+    if(trigger.isAfter && trigger.isUpdate){
+        AccTriggerHandler.aftUpdTri(Trigger.new,Trigger.oldMap);
+    }
+    
+    //before Update
+    if(Trigger.isBefore && Trigger.isUpdate){
+        AccTriggerHandler.befUp(Trigger.New,Trigger.oldMap);
+    }
+    
+    //After Insert
+    if(Trigger.isAfter && Trigger.isInsert){
+        AccTriggerHandler.aftIns(Trigger.new);
+    }
+    
+    //Before Insert
+    if(Trigger.isBefore && Trigger.isInsert){
+        AccTriggerHandler.befIns(Trigger.new);
+    }
+    
+}

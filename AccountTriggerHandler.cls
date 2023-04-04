@@ -1,4 +1,4 @@
-public class AccTriggerHandler {
+public class with sharing AccTriggerHandler {
     
     //after Undelete
     public static void sendEmailOnUndelete(List<Account>accList){
